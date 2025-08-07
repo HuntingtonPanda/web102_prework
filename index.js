@@ -161,15 +161,22 @@ descriptionContainer.appendChild(descriptionElement);
  * Skills used: spread operator, destructuring, template literals, sort 
  */
 
-const firstGameContainer = document.getElementById("first-game");
-const secondGameContainer = document.getElementById("second-game");
+const firstGameBox = document.getElementById("first-game");
+const secondGameBox = document.getElementById("second-game");
 
 const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
     return item2.pledged - item1.pledged;
 });
 
 // use destructuring and the spread operator to grab the first and second games
+const [firstGame, secondGame, ... rest] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+const topPledgeGame = document.createElement("p");
+topPledgeGame.textContent = `${firstGame.name}`;
+firstGameBox.appendChild(topPledgeGame);
 
 // do the same for the runner up item
+const runnerUpElement = document.createElement("p");
+runnerUpElement.textContent = `${secondGame.name}`;
+secondGameBox.appendChild(runnerUpElement);

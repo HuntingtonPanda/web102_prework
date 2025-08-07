@@ -24,7 +24,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented features:
 
-<img src='assests/WEB102.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='assets/WEB102.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 GIF created with [ScreenToGif](https://www.screentogif.com/)

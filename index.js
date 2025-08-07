@@ -117,6 +117,7 @@ function filterFundedOnly() {
 
 // show all games
 function showAllGames() {
+    searchBar.value = "";
     deleteChildElements(gamesContainer);
 
     // add all games from the JSON data to the DOM
@@ -164,7 +165,7 @@ descriptionContainer.appendChild(descriptionElement);
 const firstGameBox = document.getElementById("first-game");
 const secondGameBox = document.getElementById("second-game");
 
-const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
+const sortedGames =  [...GAMES_JSON].sort( (item1, item2) => {
     return item2.pledged - item1.pledged;
 });
 
@@ -180,3 +181,19 @@ firstGameBox.appendChild(topPledgeGame);
 const runnerUpElement = document.createElement("p");
 runnerUpElement.textContent = `${secondGame.name}`;
 secondGameBox.appendChild(runnerUpElement);
+
+/************************************************************************************
+ * Search bar
+ * 
+ */
+
+const searchBar = document.getElementById("search-bar");
+
+searchBar.addEventListener("input", function () {
+    const query = searchBar.value.toLowerCase();
+    const filteredGames = GAMES_JSON.filter(game =>
+        game.name.toLowerCase().includes(query)
+    );
+    deleteChildElements(gamesContainer);
+    addGamesToPage(filteredGames);
+});
